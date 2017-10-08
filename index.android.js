@@ -1,53 +1,97 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, Text, View, ScrollView } from 'react-native';
+import Header from "./src/components/Header";
+import MessageCard from "./src/components/MessageCard";
 
-export default class projectlayout extends Component {
+const messages = [
+  {
+    id: 0,
+    datetime: new Date(),
+    body: "I miss you boo!!!!",
+    sender: {
+      name: "One"
+    }
+  },
+  {
+    id: 1,
+    datetime: new Date(),
+    body: "I miss you boo two!!!!",
+    sender: {
+      name: "Two"
+    }
+  },
+  {
+    id: 2,
+    datetime: new Date(),
+    body: "I miss you boo three!!!!",
+    sender: {
+      name: "Three"
+    }
+  },
+  {
+    id: 3,
+    datetime: new Date(),
+    body: "I miss you boo!!!!",
+    sender: {
+      name: "Four"
+    }
+  },
+  {
+    id: 4,
+    datetime: new Date(),
+    body: "I miss you boo two!!!!",
+    sender: {
+      name: "Five"
+    }
+  },
+  {
+    id: 5,
+    datetime: new Date(),
+    body: "I miss you boo three!!!!",
+    sender: {
+      name: "Six"
+    }
+  }
+]
+
+
+const styles = {
+  timeline: {
+    width: 2,
+    marginLeft: 20,
+    backgroundColor: '#ccc'
+  },
+  messages: {
+    marginLeft: -6,
+    flex: 1
+  }
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View style={{flex: 1}}>
+        <Header title="Your Messages"/>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.timeline}/>
+          <View style={styles.messages}>
+            <ScrollView>
+              {messages.map(message => {
+                return <MessageCard message={message} key={message.id}/>;
+              })}
+            </ScrollView>
+          </View>
+        </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('projectlayout', () => projectlayout);
+AppRegistry.registerComponent('projectlayout', () => App);
