@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, ScrollView } from 'react-native';
-import Header from "./src/native-components/Header";
-import MessageCard from "./src/native-components/MessageCard";
+import ReactDOM from 'react-dom';
+import MessageCard from "./web-components/MessageCard";
 
 const messages = [
   {
@@ -57,12 +56,12 @@ const messages = [
 
 const styles = {
   timeline: {
-    width: 2,
-    marginLeft: 20,
+    width: '2px',
+    marginLeft: '20px',
     backgroundColor: '#ccc'
   },
   messages: {
-    marginLeft: -6,
+    marginLeft: '15px',
     flex: 1
   }
 }
@@ -77,21 +76,22 @@ class App extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <Header title="Your Messages"/>
-        <View style={{display: 'flex', flexDirection: 'row'}}>
-          <View style={styles.timeline}/>
-          <View style={styles.messages}>
-            <ScrollView>
-              {messages.map(message => {
-                return <MessageCard message={message} key={message.id}/>;
-              })}
-            </ScrollView>
-          </View>
-        </View>
-      </View>
+      <div style={{flex: 1}}>
+        <h1>Your Messages</h1>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div style={styles.timeline}/>
+          <div style={styles.messages}>
+            {messages.map(message => {
+              return <MessageCard message={message} key={message.id}/>;
+            })}
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
-AppRegistry.registerComponent('projectlayout', () => App);
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);

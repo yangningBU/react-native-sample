@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, ScrollView } from 'react-native';
-import Header from "./src/components/Header";
-import MessageCard from "./src/components/MessageCard";
+import Header from "./src/native-components/Header";
+import MessageCard from "./src/native-components/MessageCard";
 
 const messages = [
   {
