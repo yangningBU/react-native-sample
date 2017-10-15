@@ -62,7 +62,7 @@ const styles = {
     backgroundColor: '#ccc'
   },
   messages: {
-    marginLeft: -6,
+    marginLeft: -5.5,
     flex: 1
   }
 }
